@@ -36,11 +36,8 @@ public class Order implements Serializable{
 	private String deliveryCity;
 	
 	private String deliveryState;
+	
 	private String deliveryZip;
-	
-	@ManyToMany(targetEntity = Taco.class)
-	private List<Taco> tacos = new ArrayList<>();
-	
 	
 	//CreditCardNumber(message = "이거 니 카드 아니지??")
 	@NotBlank(message = "이거 니 카드 아니지??")
@@ -51,6 +48,9 @@ public class Order implements Serializable{
 	
 	@Digits(integer=3, fraction=0, message = "Invalid CVV")
 	private String ccCVV;
+	
+	@ManyToMany(targetEntity = Taco.class)
+	private List<Taco> tacos = new ArrayList<>();
 	
 	public void addDesign(Taco design) {
 		this.tacos.add(design);
